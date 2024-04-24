@@ -7,6 +7,14 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      garamond: ["Garamond", "serif"],
+      sans: ["Inter", "sans-serif"],
+    },
+    lineHeight: {
+      "40": "40px",
+      "32": "32px",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
