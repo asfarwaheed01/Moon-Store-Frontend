@@ -18,8 +18,8 @@ const BestSellers = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
-    refetchInterval: 5000,
-    staleTime: 1000,
+    refetchInterval: Infinity,
+    // staleTime: 1000,
   });
   return (
     <section className="py-[5%]">

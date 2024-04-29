@@ -26,7 +26,7 @@ const Blog = () => {
               ultrices.
             </p>
             <Link
-              href="#"
+              href="/blog"
               className="text-[14px] font-bold border-black border-b-2"
             >
               READ MORE

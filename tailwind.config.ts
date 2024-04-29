@@ -14,6 +14,7 @@ const config: Config = {
     lineHeight: {
       "40": "40px",
       "32": "32px",
+      "24": "24px",
     },
     extend: {
       backgroundImage: {

@@ -7,7 +7,7 @@ import Container from "../Container";
 
 const fetchProducts = async () => {
   const response = await axios.get<Product[]>("http://localhost:8000/products");
-  return response.data.slice(4, 8);
+  return response.data.slice(0, 4);
 };
 
 const NewArrivals = () => {
@@ -17,11 +17,11 @@ const NewArrivals = () => {
     error,
     refetch,
   } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products1"],
     queryFn: fetchProducts,
-    refetchInterval: 5000,
-    staleTime: 1000,
+    refetchInterval: Infinity,
   });
+
   return (
     <section className="py-[5%]">
       <Container>

@@ -9,7 +9,7 @@ import { aboutUs, services, portfolio } from "./data";
 const Footer = () => {
   return (
     <>
-      <div className="bg-[#3A3845] pt-[5%] px-[5%] relative">
+      <div className="bg-[#3A3845] pt-[5%] px-[5%] relative block">
         <Container>
           <div className="text-[#E5E5E5] md:flex justify-between">
             <div className="footer-right flex flex-col gap-5 md:w-[50%] w-[100%]">

@@ -12,8 +12,19 @@ body {
   font-family: sans-serif;
   box-sizing: border-box;
 }
-/* .mainSec1 {
-  background-image: url("../public/assets/home-sec-1-bg.png");
-  height: 100vh;
-  background-repeat: no-repeat;
-} */
+.swiper .swiper-button-prev,
+.swiper .swiper-button-next {
+  color: black;
+  height: 10px;
+  width: 10px;
+}
+.swiper .swiper-pagination-fraction {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper .swiper-button-prev,
+  .swiper .swiper-button-next {
+    display: none;
+  }
+}
