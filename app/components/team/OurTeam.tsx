@@ -17,11 +17,11 @@ const OurTeam = () => {
   return (
     <section className="">
       <Container>
-        <div className="p-8 flex lg:items-center lg:justify-center overflow-x-auto">
+        <div className="flex gap-2 lg:items-center lg:justify-between overflow-x-auto">
           {items.map((item, index) => (
             <div
               key={index}
-              className="p-4 flex flex-col items-center justify-center min-w-[300px]"
+              className=" flex flex-col items-center justify-center min-w-[270px]"
             >
               <Image
                 src={item.imageSrc}

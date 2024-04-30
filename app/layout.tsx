@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import { EB_Garamond } from "next/font/google";
 import Footer from "./components/footer/Footer";
 import QueryProvider from "@/providers/QueryProvider";
+import { AuthProvider } from "./context/authContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const garamond = EB_Garamond({
@@ -25,9 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <QueryProvider>{children}</QueryProvider>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+          <QueryProvider>{children}</QueryProvider>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import Container from "../components/Container";
 import Link from "next/link";
 import { categories, colors, prices, tags } from "./shopdata";
 import { InputLabel, NativeSelect, Pagination } from "@mui/material";
+import ProductsList from "../components/productslist/ProductsList";
 
 const fetchProducts = async () => {
   const response = await axios.get<Product[]>("http://localhost:8000/products");
@@ -161,37 +162,7 @@ const Page = () => {
             </div>
           </div>
           <div className="md:w-[80%]">
-            <div className="flex flex-wrap justify-between gap-1 mx-2 md:mx-0">
-              {products &&
-                products.map((product) => (
-                  <div
-                    key={product._id}
-                    className="bg-white md:w-[30%] w-[47%] h-[500px] mb-6 relative"
-                  >
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="flex flex-col justify-between">
-                      <div>
-                        <h2 className="text-[0.9rem] font-semibold mb-2">
-                          {product.name}
-                        </h2>
-                        <p className="text-black text-[0.9rem] font-semibold mb-3">
-                          ${product.price}.00
-                        </p>
-                        <p className="text-[#807F86] text-[0.88rem] mb-2">
-                          {product.description}
-                        </p>
-                      </div>
-                      <button className="absolute bottom-0 text-black border-black border text-center w-[100%] font-bold py-2 px-4">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
-                ))}
-            </div>
+            <ProductsList />
             <div className="flex md:float-right justify-center mx-auto my-4">
               <Pagination count={4} variant="outlined" shape="rounded" />
             </div>

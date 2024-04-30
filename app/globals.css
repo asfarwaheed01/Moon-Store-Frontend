@@ -27,4 +27,19 @@ body {
   .swiper .swiper-button-next {
     display: none;
   }
+  .history {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .history .sec-4-text {
+    height: 268px;
+  }
+  .madein .sec-4-text {
+    height: 268px;
+  }
+  /* about page */
+  .history3 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

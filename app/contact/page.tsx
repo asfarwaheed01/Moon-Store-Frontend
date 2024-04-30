@@ -1,11 +1,12 @@
 import React from "react";
-import { socials } from "./contactdata";
+import { infoData, socials } from "./contactdata";
 import contactbg from "../../public/assets/contact-bg.png";
 import Image from "next/image";
 import Container from "../components/Container";
 import contactflower from "../../public/assets/contact-icon-1.png";
 import Link from "next/link";
 import rightArrow from "../../public/assets/Arrow Right.png";
+import { formFields } from "./contactdata";
 
 const page = () => {
   return (
@@ -13,10 +14,10 @@ const page = () => {
       <Image
         src={contactbg}
         alt="Background Image"
-        className="md:h-[90vh] h-[50vh] w-full"
+        className="md:h-[90vh] h-[50vh] object-cover w-full"
       ></Image>
       <Container>
-        <div className="bg-[#3A3845] md:w-[45%] md:h-[90vh] h-[50vh] flex justify-center items-center md:absolute md:top-0">
+        <div className="bg-[#3A3845] md:w-[40%] md:h-[90vh] py-[10%] flex justify-center items-center md:absolute md:top-0">
           <div className="flex flex-col justify-center text-white gap-5 py-5">
             <div className="sec-1-img">
               <Image
@@ -65,116 +66,54 @@ const page = () => {
                 phasellus mollis sit aliquam sit nullam.
               </p>
               <div className="basic-info flex flex-col gap-4 mt-4">
-                <div className="hours text-center">
-                  <h3 className="text-[0.875rem] font-semibold mb-2 text-[#595667]">
-                    Office Hours:
-                  </h3>
-                  <p className="text-[#C69B7B] text-[0.785rem]">
-                    Monday - Friday 8:00 am to 5:00 pm
-                  </p>
-                </div>
-                <div className="email text-center">
-                  <h3 className="text-[0.875rem] font-semibold mb-2 text-[#595667]">
-                    Email:
-                  </h3>
-                  <p className="text-[#C69B7B] text-[0.785rem]">
-                    contact@company.com
-                  </p>
-                </div>
-                <div className="phone text-center">
-                  <h3 className="text-[0.875rem] font-semibold mb-2 text-[#595667]">
-                    Phone:
-                  </h3>
-                  <p className="text-[#C69B7B] text-[0.785rem]">
-                    (414) 687 - 5892
-                  </p>
-                </div>
-                <div className="location text-center">
-                  <h3 className="text-[0.875rem] font-semibold mb-2 text-[#595667]">
-                    Location:
-                  </h3>
-                  <p className="text-[#C69B7B] text-[0.785rem]">
-                    59 Middle Point Rd <br />
-                    San Francisco, 80412
-                  </p>
-                </div>
+                {infoData.map((info, index) => (
+                  <div key={index} className="info text-center">
+                    <h3 className="text-[0.875rem] font-semibold mb-2 text-[#595667]">
+                      {info.heading}
+                    </h3>
+                    <p className="text-[#C69B7B] text-[0.785rem] max-w-[250px] mx-auto">
+                      {info.text}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="form md:w-[65%] mx-auto">
               <form className="bg-white rounded pt-6 pb-8 mb-4 px-6">
-                <div className="md:flex justify-between">
-                  <div className="mb-4 md:w-[48%]">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="name"
+                <div className="md:flex flex-wrap justify-between">
+                  {formFields.map((field, index) => (
+                    <div
+                      key={index}
+                      className={`mb-2 ${
+                        field.name === "message" ? "md:w-full" : "md:w-[48%]"
+                      }`}
                     >
-                      Name
-                    </label>
-                    <input
-                      className="shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                      id="name"
-                      type="text"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div className="mb-4 md:w-[48%]">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      Email
-                    </label>
-                    <input
-                      className="shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                      id="email"
-                      type="email"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                </div>
-                <div className="md:flex justify-between">
-                  <div className="mb-4 md:w-[48%]">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="phone"
-                    >
-                      Phone
-                    </label>
-                    <input
-                      className="shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                      id="phone"
-                      type="tel"
-                      placeholder="Enter your phone number"
-                    />
-                  </div>
-                  <div className="mb-4 md:w-[48%]">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="company"
-                    >
-                      Company
-                    </label>
-                    <input
-                      className="shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                      id="company"
-                      type="text"
-                      placeholder="Enter your company name"
-                    />
-                  </div>
-                </div>
-                <div className="mb-4">
-                  <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="message"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    className="shadow appearance-none border border-black rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                    id="message"
-                    placeholder="Enter your message"
-                    rows={4}
-                  ></textarea>
+                      <label
+                        className="block text-gray-700 text-sm font-bold mb-2"
+                        htmlFor={field.name}
+                      >
+                        {field.label}
+                      </label>
+                      {field.type === "textarea" ? (
+                        <textarea
+                          className="shadow text-[#807F86] text-[0.875rem] appearance-none border border-black w-full py-2 px-3 leading-tight"
+                          id={field.name}
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          rows={field.rows}
+                        ></textarea>
+                      ) : (
+                        <input
+                          className="shadow text-[#807F86] text-[0.875rem] appearance-none border border-black w-full py-2 px-3 leading-tight"
+                          id={field.name}
+                          name={field.name}
+                          type={field.type}
+                          placeholder={field.placeholder}
+                          required
+                        />
+                      )}
+                    </div>
+                  ))}
                 </div>
                 <div className="flex items-center w-[100%] justify-between">
                   <button className="bg-[#3A3845] relative text-[12px] font-semibold w-full inline-flex items-center justify-center px-4 py-3 border border-white text-white">

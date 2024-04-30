@@ -7,7 +7,7 @@ interface ContainerProps {
 
 const Container: React.FC<ContainerProps> = ({ children, className }) => {
   return (
-    <div className={`max-w-[1330px] mx-auto overflow-hidden ${className}`}>
+    <div className={`max-w-[1260px] mx-auto overflow-hidden ${className}`}>
       {children}
     </div>
   );

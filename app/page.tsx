@@ -35,10 +35,10 @@ export default function Home() {
         <Image
           src={secOneBg}
           alt="Background Image"
-          className="md:h-auto h-[50vh] w-[100%]"
+          className="md:h-auto h-[40vh] w-[100%]"
         ></Image>
         <Container>
-          <div className="bg-[#826F66] md:w-[45%] md:h-full flex justify-center items-center md:absolute md:top-0">
+          <div className="bg-[#826F66] md:w-[40%] md:h-full py-[10%] flex justify-center items-center md:absolute md:top-0">
             <div className="flex flex-col justify-center text-white gap-5 py-5">
               <div className="sec-1-img">
                 <Image
@@ -65,17 +65,17 @@ export default function Home() {
           </div>
         </Container>
       </section>
-      <section className="bg-[#ffffff] md:py-[5%]">
+      <section className="bg-[#ffffff] py-[5%]">
         <Container>
-          <div className="p-8 flex lg:items-center lg:justify-center overflow-x-auto">
+          <div className="flex gap-6 lg:items-center lg:justify-between overflow-x-auto">
             {accessories.map((item, index) => (
               <div
                 key={index}
-                className="p-4 flex flex-col items-center justify-center min-w-[300px]"
+                className="pl-[3%] md:pl-0 flex flex-col items-center justify-center min-w-[270px]"
               >
                 <Image
                   src={item.imageSrc}
-                  className="p-2 h-full w-full object-cover"
+                  className="h-full w-full object-cover"
                   alt="team-img"
                 />
                 <div className="text-[1rem] font-semibold mt-2">
@@ -118,7 +118,7 @@ export default function Home() {
       <BestSellers />
       <section className="sec-4 bg-white">
         <Container>
-          <div className="sec-4 md:flex md:h-[348px] overflow-hidden">
+          <div className="madein sec-4 md:flex md:h-[348px] overflow-hidden">
             {/* Section with text */}
             <div className="sec-4-text md:w-[50%] w-[100%] flex flex-col py-2 gap-5 justify-center items-center bg-[#F7F6F5] text-center">
               <h2 className="text-[32px] font-garamond font-bold leading-32">
@@ -143,18 +143,18 @@ export default function Home() {
               <Image
                 src={vietnam}
                 alt="off-image"
-                className="object-cover w-full h-[50vh] md:h-full"
+                className="object-cover w-full h-[300px] md:h-full"
               />
             </div>
           </div>
 
-          <div className="sec-4 md:flex md:h-[348px] overflow-hidden">
+          <div className="history sec-4 md:flex md:h-[348px] overflow-hidden">
             {/* Image section */}
             <div className="sec-3-img md:w-[50%] w-[100%]">
               <Image
                 src={history}
                 alt="off-image"
-                className="object-cover w-[100%] h-[50vh] md:h-full"
+                className="object-cover w-[100%] h-[300px] md:h-full"
               />
             </div>
             {/* Section with text */}
