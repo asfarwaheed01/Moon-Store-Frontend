@@ -13,7 +13,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
       key={product._id}
       className={`bg-white md:w-[23%] w-[47%] h-[500px] mb-6 relative ${className}`}
     >
-      <Link href={`products/${product._id}`}>
+      <Link href={`/products/${product._id}`}>
         <img
           src={product.image}
           alt={product.name}
@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
         />
       </Link>
       <div className="flex flex-col justify-between">
-        <Link href={`products/${product._id}`}>
+        <Link href={`/products/${product._id}`}>
           <div>
             <h2 className="text-[0.9rem] font-semibold mb-2">{product.name}</h2>
             <p className="text-black text-[0.9rem] font-semibold mb-3">

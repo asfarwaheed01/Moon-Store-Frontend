@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#FFFFFF] border-b-2 border-[#CAC9CF]">
+    <div className="bg-[#FFFFFF] border-b-[1px] border-[#CAC9CF]">
       <Container>
         <div className="flex justify-between py-3 items-center px-[5%] md:px-0">
           <div className="md:hidden">
