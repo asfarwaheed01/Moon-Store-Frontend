@@ -12,7 +12,7 @@ const Blog = () => {
           OUR BLOG
         </h1>
         <div className="sec-3 md:flex md:h-[438px]">
-          <div className="sec-3-text md:w-[50%] flex flex-col py-2 gap-5 justify-center items-center bg-[#F7F6F5] text-center">
+          <div className="sec-3-text md:w-[50%] flex flex-col py-[10%] gap-5 justify-center items-center bg-[#F7F6F5] text-center">
             <h4 className="text-[#807F86] font-sans font-semibold text-[1.12rem]">
               TABLEWARE
             </h4>

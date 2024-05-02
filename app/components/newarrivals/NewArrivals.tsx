@@ -9,7 +9,7 @@ import { BASE_URL } from "@/app/config/config";
 
 const fetchProducts = async () => {
   const response = await axios.get<Product[]>(`${BASE_URL}products`);
-  return response.data.slice(0, 4);
+  return response.data;
 };
 
 const NewArrivals = () => {
@@ -30,7 +30,7 @@ const NewArrivals = () => {
         {products && products.length && (
           <ProductDisplay
             heading="New Arrivals"
-            products={products.slice(0, 4)}
+            products={products.slice(4, 8)}
           />
         )}
       </Container>

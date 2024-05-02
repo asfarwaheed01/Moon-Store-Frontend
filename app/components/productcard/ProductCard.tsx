@@ -1,5 +1,6 @@
 import React from "react";
 import { Product } from "@/app/utils/product";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
@@ -12,21 +13,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
       key={product._id}
       className={`bg-white md:w-[23%] w-[47%] h-[500px] mb-6 relative ${className}`}
     >
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-full h-64 object-cover"
-      />
+      <Link href={`products/${product._id}`}>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-64 object-cover"
+        />
+      </Link>
       <div className="flex flex-col justify-between">
-        <div>
-          <h2 className="text-[0.9rem] font-semibold mb-2">{product.name}</h2>
-          <p className="text-black text-[0.9rem] font-semibold mb-3">
-            ${product.price}.00
-          </p>
-          <p className="text-[#807F86] text-[0.88rem] mb-2">
-            {product.description}
-          </p>
-        </div>
+        <Link href={`products/${product._id}`}>
+          <div>
+            <h2 className="text-[0.9rem] font-semibold mb-2">{product.name}</h2>
+            <p className="text-black text-[0.9rem] font-semibold mb-3">
+              ${product.price}.00
+            </p>
+            <p className="text-[#807F86] text-[0.88rem] mb-2">
+              {product.description}
+            </p>
+          </div>
+        </Link>
         <button className="absolute bottom-0 text-black border-black border text-center w-[100%] font-bold py-2 px-4">
           Add to Cart
         </button>

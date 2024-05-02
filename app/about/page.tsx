@@ -7,8 +7,9 @@ import about3 from "../../public/assets/about3.png";
 import about4 from "../../public/assets/about4.png";
 import Image from "next/image";
 import OurTeam from "../components/team/OurTeam";
-import { work } from "./aboutdata";
+import { work, aboutData } from "./aboutdata";
 import CustomText from "../components/customtext/CustomText";
+import TextWithImage from "../components/textwithimage/TextWithImage";
 
 const page = () => {
   return (
@@ -28,55 +29,34 @@ const page = () => {
       </section>
       <section>
         <Container>
-          <div className="history md:flex  w-full">
-            <div className="h1-text md:w-[50%]  flex flex-col gap-2 justify-center items-center bg-[#F7F6F5]">
-              <CustomText
-                heading="1910"
-                text="Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit
-                phasellus mollis sit aliquam sit nullam neque ultrices."
-              />
-            </div>
-            <div className="h1-image md:w-[50%]">
-              <Image
-                src={about1}
-                alt="about-image"
-                className="object-cover w-full"
-              />
-            </div>
-          </div>
-          <div className="history2 md:flex ">
-            <div className="h2-image md:w-[50%] w-[100%] h-full ">
-              <Image
-                src={about2}
-                alt="about-image"
-                className="object-cover w-full"
-              />
-            </div>
-            <div className="h2-text md:w-[50%] flex flex-col gap-2 justify-center items-center bg-[#F7F6F5]">
-              <CustomText
-                heading="1990"
-                text="Maecenas sem eros, rutrum vitae risus eget, vulputate aliquam
-                nisi. dolor sit amet consectetur adipiscing eli mattis sit
-                phasellus mollis sit aliquam sit"
-              />
-            </div>
-          </div>
-          <div className="history3 md:flex">
-            <div className="h2-text md:w-[50%] flex flex-col gap-2 justify-center items-center bg-[#F7F6F5]">
-              <CustomText
-                heading="2010"
-                text=" Rutrum vitae risus eget, vulputate aliquam nisi ex gravida neque
-                tempus. sit aliquam sit nullam neque ultrices."
-              />
-            </div>
-            <div className="h2-image md:w-[50%] w-[100%] h-full ">
-              <Image
-                src={about3}
-                alt="about-image"
-                className="object-cover w-full"
-              />
-            </div>
-          </div>
+          {/* <TextWithImage
+            className="md:h-[348px]"
+            heading="1910"
+            paragraph="Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit
+            phasellus mollis sit aliquam sit nullam neque ultrices."
+            link="#"
+            image={{ src: about1.src, alt: "Alt Text" }}
+          />
+          <TextWithImage
+            className="md:h-[348px] md:flex-row-reverse"
+            heading="1990"
+            paragraph="Maecenas sem eros, rutrum vitae risus eget, vulputate aliquam
+            nisi. dolor sit amet consectetur adipiscing eli mattis sit
+            phasellus mollis sit aliquam sit"
+            link="#"
+            image={{ src: about2.src, alt: "Alt Text" }}
+          />
+          <TextWithImage
+            className="md:h-[348px]"
+            heading="2010"
+            paragraph=" Rutrum vitae risus eget, vulputate aliquam nisi ex gravida neque
+            tempus. sit aliquam sit nullam neque ultrices."
+            link="#"
+            image={{ src: about3.src, alt: "Alt Text" }}
+          /> */}
+          {aboutData.map((data, index) => (
+            <TextWithImage key={index} {...data} />
+          ))}
         </Container>
       </section>
       <section>

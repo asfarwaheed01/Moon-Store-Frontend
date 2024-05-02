@@ -27,9 +27,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Navbar />
-          <QueryProvider>{children}</QueryProvider>
-          <Footer />
+          <QueryProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </QueryProvider>
         </AuthProvider>
       </body>
     </html>

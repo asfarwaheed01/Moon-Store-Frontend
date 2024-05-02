@@ -11,7 +11,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/material": "^5.15.15",
+    "@mui/icons-material": "^5.15.16",
+    "@mui/material": "^5.15.16",
     "@next/font": "^14.2.2",
     "@tanstack/react-query": "^5.32.0",
     "@tanstack/react-query-devtools": "^5.32.0",
@@ -21,6 +22,7 @@
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-router-dom": "^6.23.0",
     "swiper": "^11.1.1"
   },
   "devDependencies": {
