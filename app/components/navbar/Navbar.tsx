@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "../Container";
 import Image from "next/image";
 import logo from "../../../public/assets/logo.png";
@@ -10,14 +10,12 @@ import cart from "../../../public/assets/Shopping cart.png";
 import Link from "next/link";
 import { navLinks } from "./navdata";
 import { AuthContext } from "@/app/context/authContext";
-import { Menu, MenuItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Navbar = () => {
   const { state } = useContext(AuthContext);
   const { user, accessToken } = state;
-  const [anchorEl, setAnchorEl] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuOpen = () => {
@@ -28,12 +26,12 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
-  const handleAvatarClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleAvatarClose = (event: any) => {
-    setAnchorEl(null);
+  const handleMenuClose2 = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -68,45 +66,32 @@ const Navbar = () => {
             </div>
 
             <div className="hidden md:block">
-              <div
-                onClick={handleAvatarClick}
-                className="cursor-pointer relative"
-              >
+              <div onClick={handleMenuToggle} className="cursor-pointer">
                 <Image src={avatar} alt="Avatar" />
-                <Menu
-                  anchorEl={anchorEl}
-                  open={Boolean(anchorEl)}
-                  onClose={handleAvatarClose}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "right",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                >
-                  {user ? (
-                    <MenuItem
-                      onClick={(event) => {
-                        handleAvatarClose(event);
-                        event.stopPropagation();
-                      }}
-                    >
-                      <Link href="/profile">Profile</Link>
-                    </MenuItem>
-                  ) : (
-                    <MenuItem
-                      onClick={(event) => {
-                        handleAvatarClose(event);
-                        event.stopPropagation();
-                      }}
-                    >
-                      <Link href="/login">Login</Link>
-                    </MenuItem>
-                  )}
-                </Menu>
               </div>
+              {isMenuOpen && (
+                <div className="absolute right-0 z-10 mt-2 w-48 bg-white rounded-md shadow-lg">
+                  <div className="py-1">
+                    {user ? (
+                      <Link
+                        href="/profile"
+                        onClick={handleMenuClose2}
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                      >
+                        Profile
+                      </Link>
+                    ) : (
+                      <Link
+                        href="/login"
+                        onClick={handleMenuClose2}
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                      >
+                        Login
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
             <Link href="/">
@@ -124,7 +109,7 @@ const Navbar = () => {
         <div className="md:hidden inset-0 bg-white">
           <Container>
             <div className="flex flex-col pb-2">
-              {navLinks.map((item, index) => (
+              {/* {navLinks.map((item, index) => (
                 <Link
                   key={index}
                   href={item.link}
@@ -132,7 +117,19 @@ const Navbar = () => {
                 >
                   {item.label}
                 </Link>
-              ))}
+              ))} */}
+              {navLinks.map((item, index) =>
+                item.label === "Dashboard" &&
+                (!user || !accessToken || !user.isAdmin) ? null : (
+                  <Link
+                    key={index}
+                    href={item.link}
+                    className="text-lg text-gray-600 py-2 px-4 border-b border-gray-200"
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </div>
           </Container>
         </div>

@@ -8,7 +8,6 @@ import about4 from "../../public/assets/about4.png";
 import Image from "next/image";
 import OurTeam from "../components/team/OurTeam";
 import { work, aboutData } from "./aboutdata";
-import CustomText from "../components/customtext/CustomText";
 import TextWithImage from "../components/textwithimage/TextWithImage";
 
 const page = () => {
@@ -29,31 +28,6 @@ const page = () => {
       </section>
       <section>
         <Container>
-          {/* <TextWithImage
-            className="md:h-[348px]"
-            heading="1910"
-            paragraph="Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit
-            phasellus mollis sit aliquam sit nullam neque ultrices."
-            link="#"
-            image={{ src: about1.src, alt: "Alt Text" }}
-          />
-          <TextWithImage
-            className="md:h-[348px] md:flex-row-reverse"
-            heading="1990"
-            paragraph="Maecenas sem eros, rutrum vitae risus eget, vulputate aliquam
-            nisi. dolor sit amet consectetur adipiscing eli mattis sit
-            phasellus mollis sit aliquam sit"
-            link="#"
-            image={{ src: about2.src, alt: "Alt Text" }}
-          />
-          <TextWithImage
-            className="md:h-[348px]"
-            heading="2010"
-            paragraph=" Rutrum vitae risus eget, vulputate aliquam nisi ex gravida neque
-            tempus. sit aliquam sit nullam neque ultrices."
-            link="#"
-            image={{ src: about3.src, alt: "Alt Text" }}
-          /> */}
           {aboutData.map((data, index) => (
             <TextWithImage key={index} {...data} />
           ))}

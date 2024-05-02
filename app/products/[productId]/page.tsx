@@ -156,7 +156,7 @@ const ProductPage = () => {
                 </div>
               </div>
             ) : (
-              <p>Loading...</p>
+              <p>Product Details Loading...</p>
             )}
           </div>
         </section>

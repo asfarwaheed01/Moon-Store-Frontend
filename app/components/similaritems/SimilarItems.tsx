@@ -32,9 +32,11 @@ const SimilarItems = () => {
           <h1 className="text-[1.9rem] text-left text-[#3A3845] font-bold font-garamond mb-8 ml-[2%] md:ml-0">
             Similar Items
           </h1>
-          <div className="flex flex-wrap justify-between gap-1 mx-4 md:mx-0">
+          <div className="pl-3 md:pl-0 flex gap-[1.2rem] lg:items-center lg:justify-between overflow-x-auto">
             {products &&
-              products.map((product) => <ProductCard product={product} />)}
+              products.map((product) => (
+                <ProductCard product={product} className="min-w-[260px]" />
+              ))}
           </div>
         </div>
       </Container>
