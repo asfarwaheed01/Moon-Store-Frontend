@@ -109,15 +109,6 @@ const Navbar = () => {
         <div className="md:hidden inset-0 bg-white">
           <Container>
             <div className="flex flex-col pb-2">
-              {/* {navLinks.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.link}
-                  className="text-lg text-gray-600 py-2 px-4 border-b border-gray-200"
-                >
-                  {item.label}
-                </Link>
-              ))} */}
               {navLinks.map((item, index) =>
                 item.label === "Dashboard" &&
                 (!user || !accessToken || !user.isAdmin) ? null : (
