@@ -13,6 +13,7 @@ import axios from "axios";
 import { BASE_URL } from "./config/config";
 import { Product } from "./utils/product";
 import { useQuery } from "@tanstack/react-query";
+import { cookies } from "next/headers";
 
 const textWithImageData = [
   {
@@ -33,22 +34,10 @@ const textWithImageData = [
   },
 ];
 
-const fetchProducts = async () => {
-  const response = await axios.get<Product[]>(`${BASE_URL}products`);
-  return response.data;
-};
-
 export default function Home() {
-  // const {
-  //   data: products,
-  //   isLoading,
-  //   error,
-  //   refetch,
-  // } = useQuery({
-  //   queryKey: ["products"],
-  //   queryFn: fetchProducts,
-  //   refetchInterval: Infinity,
-  // });
+  const cookieStore = cookies();
+  const token = cookieStore.getAll();
+  console.log("token is:", token);
   return (
     <div>
       <Hero />
