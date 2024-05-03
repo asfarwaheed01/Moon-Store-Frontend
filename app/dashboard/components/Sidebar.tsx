@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="bg-[#3A3845] w-[20%] min-h-[90vh] p-5">
+    <div className="bg-[#3A3845] w-[20%] min-h-[90vh] p-5 border-b-2 border-gray-400">
       <h1 className="text-[1.2rem] text-white mb-6 font-bold">
         Admin Dashboard
       </h1>

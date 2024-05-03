@@ -14,10 +14,10 @@ const page = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const accessToken = localStorage.getItem("access_token");
+        const token = localStorage.getItem("access_token");
         const response = await axios.get(`${BASE_URL}api/users`, {
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         setUsers(response.data);

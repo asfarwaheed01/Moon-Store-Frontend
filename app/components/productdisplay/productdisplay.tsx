@@ -23,7 +23,9 @@ const ProductDisplay: React.FC<ProductDisplayProps> = ({
         className={`flex flex-wrap justify-between gap-1 mx-4 md:mx-0${className}`}
       >
         {products &&
-          products.map((product) => <ProductCard product={product} />)}
+          products.map((product) => (
+            <ProductCard product={product} key={product._id} />
+          ))}
       </div>
     </div>
   );
