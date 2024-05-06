@@ -18,20 +18,12 @@ const Navbar = () => {
   const { user, accessToken } = state;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuOpen = () => {
-    setIsMenuOpen(true);
-  };
-
-  const handleMenuClose = () => {
-    setIsMenuOpen(false);
-  };
-
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleMenuClose2 = () => {
-    setIsMenuOpen(false);
+  const handleMenu = (button: "mobile" | "web", action: boolean) => {
+    if (button === "web") {
+      setIsMenuOpen(!isMenuOpen);
+    } else {
+      setIsMenuOpen(action);
+    }
   };
 
   return (
@@ -40,9 +32,17 @@ const Navbar = () => {
         <div className="flex justify-between py-3 items-center px-[5%] md:px-0">
           <div className="md:hidden">
             {isMenuOpen ? (
-              <CloseIcon onClick={handleMenuClose} />
+              <CloseIcon
+                onClick={() => {
+                  handleMenu("mobile", false);
+                }}
+              />
             ) : (
-              <MenuIcon onClick={handleMenuOpen} />
+              <MenuIcon
+                onClick={() => {
+                  handleMenu("mobile", true);
+                }}
+              />
             )}
           </div>
           <div className="logo">
@@ -50,8 +50,7 @@ const Navbar = () => {
           </div>
           <div className="menu gap-6 items-center hidden md:flex">
             {navLinks.map((item, index) =>
-              item.label === "Dashboard" &&
-              (!user || !accessToken || !user.isAdmin) ? null : (
+              (!user || !accessToken) && item.label === "Profile" ? null : (
                 <Link key={index} href={item.link} className="text-[14px]">
                   {item.label}
                 </Link>
@@ -66,7 +65,12 @@ const Navbar = () => {
             </div>
 
             <div className="hidden md:block">
-              <div onClick={handleMenuToggle} className="cursor-pointer">
+              <div
+                onClick={() => {
+                  handleMenu("web", true);
+                }}
+                className="cursor-pointer"
+              >
                 <Image src={avatar} alt="Avatar" />
               </div>
               {isMenuOpen && (
@@ -75,7 +79,9 @@ const Navbar = () => {
                     {user ? (
                       <Link
                         href="/profile"
-                        onClick={handleMenuClose2}
+                        onClick={() => {
+                          handleMenu("web", false);
+                        }}
                         className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                       >
                         Profile
@@ -83,7 +89,9 @@ const Navbar = () => {
                     ) : (
                       <Link
                         href="/login"
-                        onClick={handleMenuClose2}
+                        onClick={() => {
+                          handleMenu("web", false);
+                        }}
                         className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                       >
                         Login

@@ -3,9 +3,10 @@ import { Product } from "@/app/utils/product";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../productcard/ProductCard";
+import { api } from "@/app/hooks/api";
 
 const fetchProducts = async () => {
-  const response = await axios.get<Product[]>("http://localhost:8000/products");
+  const response = await api.get<Product[]>("products");
   return response.data;
 };
 

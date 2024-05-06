@@ -6,9 +6,10 @@ import Product from "../bestsellers/product.type";
 import Container from "../Container";
 import ProductDisplay from "../productdisplay/productdisplay";
 import { BASE_URL } from "@/app/config/config";
+import { api } from "@/app/hooks/api";
 
 const fetchProducts = async () => {
-  const response = await axios.get<Product[]>(`${BASE_URL}products`);
+  const response = await api.get<Product[]>(`products`);
   return response.data;
 };
 

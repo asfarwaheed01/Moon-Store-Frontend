@@ -23,7 +23,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-auto py-[5%]">
       <div className="w-full max-w-[400px]">
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

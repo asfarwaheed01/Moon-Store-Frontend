@@ -19,7 +19,7 @@ const page = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-auto py-[5%]">
       <div className="w-full max-w-md p-8 bg-gray-100 rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-center">Profile</h2>
         <div className="mb-4">

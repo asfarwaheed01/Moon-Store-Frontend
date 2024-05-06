@@ -18,11 +18,11 @@ interface Blog {
   description: string;
 }
 
-interface BlogCardProps {
+interface IBlogCardProps {
   blog: Blog;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+const BlogCard: React.FC<IBlogCardProps> = ({ blog }) => {
   return (
     <div className="blog-card md:w-[47%] w-[90%] mx-auto flex flex-col gap-3 mb-6">
       {/* Card Image */}
