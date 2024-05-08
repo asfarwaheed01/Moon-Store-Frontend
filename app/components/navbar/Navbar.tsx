@@ -17,6 +17,7 @@ const Navbar = () => {
   const { state } = useContext(AuthContext);
   const { user, accessToken } = state;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cartLength = state.cart.length;
 
   const handleMenu = (button: "mobile" | "web", action: boolean) => {
     if (button === "web") {
@@ -102,7 +103,8 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link href="/">
+            <Link href="/cart" className="relative">
+              <p className="absolute top-[-10px] right-[-10px]">{cartLength}</p>
               <Image src={cart} alt="cart"></Image>
             </Link>
             <Link href="/" className="hidden md:block">

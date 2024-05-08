@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Product } from "@/app/utils/product";
 import Link from "next/link";
+import { useAuth } from "@/app/context/authContext";
 
 interface ProductCardProps {
   product: Product;
@@ -8,6 +10,13 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
+  const { state, dispatch } = useAuth();
+  const [isAdded, setIsAdded] = useState(false);
+
+  const addToCart = () => {
+    dispatch({ type: "ADD_TO_CART", payload: { product, quantity: 1 } });
+    setIsAdded(true);
+  };
   return (
     <div
       key={product._id}
@@ -32,7 +41,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
             </p>
           </div>
         </Link>
-        <button className="absolute bottom-0 text-black border-black border text-center w-[100%] font-bold py-2 px-4">
+        <button
+          onClick={addToCart}
+          className="absolute bottom-0 text-black border-black border text-center w-[100%] font-bold py-2 px-4"
+        >
           Add to Cart
         </button>
       </div>

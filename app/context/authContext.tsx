@@ -15,9 +15,24 @@ interface User {
   isAdmin: boolean;
 }
 
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+}
+
+interface CartItem {
+  product: Product;
+  quantity: number;
+}
+
 interface AuthState {
   user: User | null;
   accessToken: string | null;
+  cart: CartItem[];
 }
 
 interface AuthContextType {
@@ -28,6 +43,7 @@ interface AuthContextType {
 const initialState: AuthState = {
   user: null,
   accessToken: null,
+  cart: [],
 };
 
 export const AuthContext = createContext<AuthContextType>({
