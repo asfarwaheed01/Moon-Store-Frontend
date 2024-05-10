@@ -7,38 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { authReducer } from "./reducers";
-
-interface User {
-  _id: string;
-  username: string;
-  email: string;
-  isAdmin: boolean;
-}
-
-interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string;
-}
-
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
-
-interface AuthState {
-  user: User | null;
-  accessToken: string | null;
-  cart: CartItem[];
-}
-
-interface AuthContextType {
-  state: AuthState;
-  dispatch: React.Dispatch<any>;
-}
+import { AuthContextType, AuthState } from "./context.type";
 
 const initialState: AuthState = {
   user: null,

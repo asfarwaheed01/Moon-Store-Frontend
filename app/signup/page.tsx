@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
 import { useSigninMutation } from "../hooks/SignupHook";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Google from "../components/googleLogin/Google";
 
 const SignUpPage = () => {
   const router = useRouter();
@@ -17,7 +17,6 @@ const SignUpPage = () => {
     try {
       const response = await signup({ username, email, password });
       console.log(response);
-      // Navigate to the "/" route after successful login
       router.push("/");
     } catch (error) {
       console.error("Sign Up failed:", error);
@@ -103,6 +102,7 @@ const SignUpPage = () => {
           {error && (
             <div className="text-red-500 py-2 text-center">{error.message}</div>
           )}
+          <Google />
         </form>
       </div>
     </div>

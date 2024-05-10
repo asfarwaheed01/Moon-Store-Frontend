@@ -43,14 +43,22 @@ export const authReducer = (state: any, action: Action) => {
   } else if (action.type === SET_CART) {
     return { ...state, cart: action.payload };
   } else if (action.type === ADD_TO_CART) {
-    const updatedCart = [...state.cart];
-
-    const existingItemIndex = updatedCart.findIndex(
-      (item: CartItem) => item.productId === action.payload.productId
+    console.log("Add to cart");
+    const existingItemIndex = state.cart.findIndex(
+      (item: any) => item.product._id === action.payload.product._id
     );
-    updatedCart.push({ ...action.payload, quantity: 1 });
-
-    return { ...state, cart: updatedCart };
+    if (existingItemIndex !== -1) {
+      const updatedCart = [...state.cart];
+      console.log({ updatedCart });
+      console.log(updatedCart[existingItemIndex].quantity++);
+      console.log(updatedCart);
+      return { ...state, cart: updatedCart };
+    } else {
+      return {
+        ...state,
+        cart: [...state.cart, { ...action.payload, quantity: 1 }],
+      };
+    }
   } else if (action.type === REMOVE_FROM_CART) {
     const updatedCart = state.cart.filter(
       (item: CartItem) => item.productId !== action.payload

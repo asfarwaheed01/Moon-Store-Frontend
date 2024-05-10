@@ -3,6 +3,8 @@ import { AuthContext } from "@/app/context/authContext";
 import React, { useContext } from "react";
 import { useLogoutMutation } from "../hooks/LogoutHook";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import profileImage from "@/public/assets/kitchen.png";
 
 const page = () => {
   const router = useRouter();
@@ -19,8 +21,15 @@ const page = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center h-auto py-[5%]">
-      <div className="w-full max-w-md p-8 bg-gray-100 rounded-lg">
+    <div className="flex justify-center items-center h-auto py-[5%] gap-5">
+      <div className="md:w-[50%] hidden md:block">
+        <Image
+          src={profileImage}
+          alt="profile Image"
+          className="w-full h-full"
+        ></Image>
+      </div>
+      <div className="md:w-[50%] max-w-md p-8 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold mb-4 text-center">Profile</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">

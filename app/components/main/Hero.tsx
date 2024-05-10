@@ -3,6 +3,7 @@ import React from "react";
 import Container from "../Container";
 import secOneBg from "../../../public/assets/home-sec-1-bg.png";
 import flower from "../../../public/assets/flower.png";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -32,7 +33,7 @@ const Hero = () => {
               </h1>
             </div>
             <button className="bg-[#ffffff] text-[14px] font-semibold text-black w-[220px] py-[12px] px-[1rem] mx-auto">
-              Shop Now
+              <Link href="/shop">Shop Now</Link>
             </button>
           </div>
         </div>

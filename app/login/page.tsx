@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
 import Link from "next/link";
 import { useLoginMutation } from "../hooks/AuthHook";
 import { useRouter } from "next/navigation";
+import loginImage from "@/public/assets/blog4.png";
+import Image from "next/image";
+import Google from "../components/googleLogin/Google";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -15,7 +17,6 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await mutate({ email, password });
-      // Navigate to the "/" route after successful login
       router.push("/");
     } catch (error) {
       console.error("Login failed:", error);
@@ -23,8 +24,15 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-auto py-[5%]">
-      <div className="w-full max-w-[400px]">
+    <div className="flex justify-center items-center h-auto py-[5%] gap-5">
+      <div className="hidden md:block w-[50%]">
+        <Image
+          src={loginImage}
+          alt="login-image"
+          className="w-full h-full"
+        ></Image>
+      </div>
+      <div className="md:w-[50%] max-w-[400px]">
         <form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={handleSubmit}
@@ -83,6 +91,7 @@ const LoginPage = () => {
           {error && (
             <div className="text-red-500 py-2 text-center">{error.message}</div>
           )}
+          <Google />
         </form>
       </div>
     </div>

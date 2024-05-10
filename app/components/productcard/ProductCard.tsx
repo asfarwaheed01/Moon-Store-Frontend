@@ -42,7 +42,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
           </div>
         </Link>
         <button
-          onClick={addToCart}
+          onClick={() => {
+            addToCart();
+          }}
           className="absolute bottom-0 text-black border-black border text-center w-[100%] font-bold py-2 px-4"
         >
           Add to Cart
