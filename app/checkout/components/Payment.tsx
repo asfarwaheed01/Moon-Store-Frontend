@@ -55,7 +55,7 @@ const Payment = () => {
           type="submit"
           className="w-full border-[1px] border-[#3A3845] font-semibold bg-none text-[#3A3845] py-2"
         >
-          Pay Now
+          Order Now
         </button>
       </form>
     </div>
