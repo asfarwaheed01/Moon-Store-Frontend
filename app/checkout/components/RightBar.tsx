@@ -2,9 +2,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Payment from "./Payment";
 import { useAuth } from "@/app/context/authContext";
-import { Elements } from "@stripe/react-stripe-js";
+import { Elements, useElements, useStripe } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "@/app/config/config";
+import { toast } from "react-toastify";
 
 const RightBar = () => {
   const stripePromise = loadStripe(
