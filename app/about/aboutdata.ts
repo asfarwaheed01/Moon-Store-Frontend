@@ -25,7 +25,7 @@ export const aboutData = [
     heading: "1910",
     paragraph:
       "Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam neque ultrices.",
-    link: "#",
+    link: "/shop",
     image: { src: about1.src, alt: "Alt Text" },
   },
   {
@@ -33,7 +33,7 @@ export const aboutData = [
     heading: "1990",
     paragraph:
       "Maecenas sem eros, rutrum vitae risus eget, vulputate aliquam nisi. dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit",
-    link: "#",
+    link: "/shop",
     image: { src: about2.src, alt: "Alt Text" },
   },
   {
@@ -41,7 +41,7 @@ export const aboutData = [
     heading: "2010",
     paragraph:
       "Rutrum vitae risus eget, vulputate aliquam nisi ex gravida neque tempus. sit aliquam sit nullam neque ultrices.",
-    link: "#",
+    link: "/shop",
     image: { src: about3.src, alt: "Alt Text" },
   },
 ];

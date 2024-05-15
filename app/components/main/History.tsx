@@ -10,7 +10,7 @@ const textWithImageData = [
     heading: "Made in Vietnam since 1450",
     paragraph:
       "Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam neque ultrices.",
-    link: "#",
+    link: "/shop",
     image: { src: vietnam.src, alt: "Alt Text" },
   },
   {
@@ -18,7 +18,7 @@ const textWithImageData = [
     heading: "Our History",
     paragraph:
       "Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit",
-    link: "#",
+    link: "/shop",
     image: { src: history.src, alt: "Alt Text" },
   },
 ];

@@ -15,9 +15,9 @@ const page = () => {
               <div className="main-blogs md:w-[70%] ">
                 <AllBlogs />
               </div>
-              {/* <div className="searchs-section md:w-[30%] px-2 py-4 md:py-0">
+              <div className="search-section md:w-[30%] px-2 py-4 md:py-0">
                 <SideBar />
-              </div> */}
+              </div>
             </div>
           </section>
         </Container>

@@ -11,7 +11,7 @@ const Collection = () => {
           className="md:h-[438px]"
           heading="Up to 40% off our Christmas collection"
           paragraph="Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam neque ultrices."
-          link="#"
+          link="/shop"
           image={{ src: offimage.src, alt: "Alt Text" }}
         />
       </Container>

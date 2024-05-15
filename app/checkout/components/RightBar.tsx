@@ -32,7 +32,6 @@ const RightBar = () => {
           body: JSON.stringify({ amount: backendTotal }),
         });
         const data = await response.json();
-        // console.log(data);
         setClientSecret(data.clientSecret);
       } catch (error) {
         console.error("Error fetching client secret:", error);
@@ -41,6 +40,7 @@ const RightBar = () => {
 
     fetchClientSecret();
   }, [total]);
+
   return (
     <section className="mx-[2%] mt-[5%] md:mt-0">
       <div className="flex flex-col">
