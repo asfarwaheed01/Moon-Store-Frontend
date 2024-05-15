@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { FormValues } from "./checkout.interface";
 
 const validationSchema = yup.object({
   firstName: yup.string().required("First name is required"),
@@ -16,18 +17,27 @@ const validationSchema = yup.object({
   address: yup.string().required("Address is required"),
   city: yup.string().required("City is required"),
   state: yup.string().required("State is required"),
-  zipCode: yup.number(),
+  zipCode: yup.string(),
   phone: yup.string().required("Phone number is required"),
   email: yup.string(),
   message: yup.string(),
 });
 
-const CheckoutForm = () => {
+const CheckoutForm = ({
+  onSubmit,
+}: {
+  onSubmit: (data: FormValues) => void;
+}) => {
   const {
     register,
-    handleSubmit,
+    handleSubmit: useFormSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(validationSchema) });
+
+  const onFormSubmit = (data: any, e: any) => {
+    e.preventDefault();
+    onSubmit(data as FormValues);
+  };
   return (
     <section>
       <div>
@@ -36,7 +46,7 @@ const CheckoutForm = () => {
         </h1>
       </div>
       <div className="mt-2 mx-[2%] md:mx-0">
-        <form action="">
+        <form action="" onSubmit={useFormSubmit(onFormSubmit)}>
           <div className="flex flex-wrap justify-between">
             <div className="w-full md:w-[49%] mb-4">
               <label
@@ -50,7 +60,7 @@ const CheckoutForm = () => {
                 placeholder="Asfar"
                 id="firstname"
                 {...register("firstName")}
-                name="firstname"
+                name="firstName"
                 className="w-full border border-black px-2 py-2 text-[#807F86] text-[0.875rem]"
               />
               {errors.firstName && (
@@ -68,7 +78,7 @@ const CheckoutForm = () => {
                 type="text"
                 id="lastname"
                 {...register("lastName")}
-                name="lastname"
+                name="lastName"
                 placeholder="Waheed"
                 className="w-full border border-black px-2 py-2 text-[#807F86] text-[0.875rem]"
               />
@@ -151,7 +161,7 @@ const CheckoutForm = () => {
                 placeholder="City"
                 id="City"
                 {...register("city")}
-                name="City"
+                name="city"
                 className="w-full border border-black px-2 py-2 text-[#807F86] text-[0.875rem]"
               />
               {errors.city && (
@@ -172,11 +182,11 @@ const CheckoutForm = () => {
                 className="w-full border border-black px-2 py-2 text-[#807F86] text-[0.875rem]"
               >
                 <option value="">State</option>
-                <option value="USA">Punjab</option>
-                <option value="UK">Sindh</option>
-                <option value="Canada">KPK</option>
-                <option value="Australia">Balochistan</option>
-                <option value="Australia">Gilgit Baltistan</option>
+                <option value="punjab">Punjab</option>
+                <option value="sindh">Sindh</option>
+                <option value="kpk">KPK</option>
+                <option value="balochistan">Balochistan</option>
+                <option value="gilgit baldistan">Gilgit Baltistan</option>
               </select>
               {errors.state && (
                 <p className="text-red-500">{errors.state.message}</p>
@@ -193,7 +203,7 @@ const CheckoutForm = () => {
                 type="text"
                 id="ZIP Code"
                 {...register("zipCode")}
-                name="ZIP Code"
+                name="zipCode"
                 placeholder="ZIP code"
                 className="w-full border border-black px-2 py-2 text-[#807F86] text-[0.875rem]"
               />
@@ -232,7 +242,7 @@ const CheckoutForm = () => {
               type="text"
               id="Email"
               {...register("email")}
-              name="Email"
+              name="email"
               placeholder="asfarwaheed01@gmail.com"
               className="w-full border border-black px-2 py-2 text-[#807F86] text-[0.875rem]"
             />
@@ -272,7 +282,10 @@ const CheckoutForm = () => {
               </Link>
             </div>
             <div>
-              <button className="text-white flex justify-center items-center bg-[#3A3845] py-2 w-[100%] md:w-[219px] text-center text-[0.875rem] font-semibold">
+              <button
+                type="submit"
+                className="text-white flex justify-center items-center bg-[#3A3845] py-2 w-[100%] md:w-[219px] text-center text-[0.875rem] font-semibold"
+              >
                 <span>Continue to shipping</span>
                 <Image src={right} className="ml-1" alt="right arrow" />
               </button>

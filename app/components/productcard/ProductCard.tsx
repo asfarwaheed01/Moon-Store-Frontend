@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Product } from "@/app/utils/product";
 import Link from "next/link";
 import { useAuth } from "@/app/context/authContext";
+import { toast } from "react-toastify";
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", payload: { product, quantity: 1 } });
     setIsAdded(true);
+    toast.success("Added to Cart.");
   };
   return (
     <div

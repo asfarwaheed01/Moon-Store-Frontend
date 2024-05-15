@@ -17,11 +17,11 @@ const CartItem = () => {
   const { state, dispatch } = useAuth();
   const { cart } = state;
 
-  const handleQuantityChange = (index: any, value: any) => {
+  const handleQuantityChange = (index: number, value: any) => {
     const updatedCart = [...cart];
     const updatedItem = { ...updatedCart[index] };
     updatedItem.quantity += value;
-    if (updatedItem.quantity < 1) {
+    if (!updatedItem.quantity) {
       updatedCart.splice(index, 1);
     } else {
       updatedCart[index] = updatedItem;

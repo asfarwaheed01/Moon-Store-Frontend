@@ -21,7 +21,12 @@ body {
 .swiper .swiper-pagination-fraction {
   display: none;
 }
-
+.custom-payment-element .InputElement label {
+  color: white;
+}
+.p-GridCell .p-Field .p-FieldLabel {
+  color: white;
+}
 @media screen and (max-width: 768px) {
   .swiper .swiper-button-prev,
   .swiper .swiper-button-next {

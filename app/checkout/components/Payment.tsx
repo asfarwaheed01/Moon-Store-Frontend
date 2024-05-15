@@ -1,69 +1,64 @@
-import React from "react";
-import card from "../../../public/assets/card.png";
-import Image from "next/image";
-import paypal from "../../../public/assets/paypal.png";
+"use client";
+import React, { useEffect, useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
+import { PaymentElement } from "@stripe/react-stripe-js";
+import { api } from "@/app/hooks/api";
+import { toast } from "react-toastify";
 
 const Payment = () => {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    if (!stripe || !elements) {
+      console.error("Stripe or Elements not yet loaded");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const { error: confirmationError } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: "http://localhost:3000/",
+        },
+      });
+
+      if (confirmationError) {
+        console.error("Payment confirmation error:", confirmationError);
+      } else {
+        console.log("Payment confirmed successfully!");
+        window.location.href = "http://localhost:3000/";
+        toast.success("Order Placed Successfully");
+      }
+    } catch (error) {
+      console.error("Error processing payment:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <section>
-      <div className="bg-[#3A3845] w-full px-[5%] py-[2%] mt-2">
-        <h1 className="text-white text-[1.25rem]">Payment</h1>
-        <form action="">
-          <div className="flex items-center justify-between">
-            <label htmlFor="cart" className="flex items-center mr-4">
-              <input
-                type="checkbox"
-                id="cart"
-                className="mr-1 appearance-none w-3 h-3 border border-gray-300 rounded-full checked:bg-white checked:border-transparent"
-              />
-              <span className="text-white">Card</span>
-            </label>
-            <Image src={card} alt="Credit Card" />
-          </div>
-          <div className="border-b-[1px] border-[#FFFFFF] my-[5%]"></div>
-          <div className="flex flex-col space-y-4">
-            <input
-              type="text"
-              className="border border-white bg-[#3A3845] text-[#A6A6A8] text-[0.875rem] px-3 py-1"
-              placeholder="Card Number"
-            />
-            <input
-              type="text"
-              className="border border-white bg-[#3A3845] text-[#A6A6A8] text-[0.875rem] px-3 py-1"
-              placeholder="Name on card"
-            />
-            <div className="flex w-full justify-between">
-              <input
-                type="text"
-                className=" border-white border-[1px] w-[48%] bg-[#3A3845] text-[#A6A6A8] text-[0.875rem] px-3 py-1"
-                placeholder="Expiration date  (MM/YY)"
-              />
-              <input
-                type="text"
-                className=" border-white border-[1px] w-[48%] bg-[#3A3845] text-[#A6A6A8] text-[0.875rem] px-3 py-1"
-                placeholder="Security code"
-              />
-            </div>
-            <div className="border-b-[1px] border-[#FFFFFF] my-[5%]"></div>
-          </div>
-          <div className="flex gap-2 items-center my-[5%]">
-            <div>
-              <input
-                type="checkbox"
-                id="paypal"
-                className=" appearance-none w-3 h-3 border border-gray-300 rounded-full checked:bg-white checked:border-transparent"
-              />
-            </div>
-            <div>
-              <Image src={paypal} alt="paypal"></Image>
-            </div>
-          </div>
-          <button className="text-white border-[1px] mb-2 border-white bg-[#3A3845] py-2 w-[100%] text-center text-[0.875rem] font-semibold">
-            Place order
-          </button>
-        </form>
-      </div>
-    </section>
+    <div className="form bg-[#fff] p-4 mt-4 border-[1px] border-[#3A3845]">
+      <h2 className="text-[#3A3845] pb-2 font-semibold">Payment</h2>
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <PaymentElement className="custom-payment-element" />
+        <button
+          type="submit"
+          className="w-full border-[1px] border-[#3A3845] font-semibold bg-none text-[#3A3845] py-2"
+        >
+          Pay Now
+        </button>
+      </form>
+    </div>
   );
 };
 

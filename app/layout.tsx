@@ -6,6 +6,8 @@ import { EB_Garamond } from "next/font/google";
 import Footer from "./components/footer/Footer";
 import QueryProvider from "@/providers/QueryProvider";
 import { AuthProvider } from "./context/authContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const garamond = EB_Garamond({
@@ -28,6 +30,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <QueryProvider>
+            <ToastContainer />
             <Navbar />
             {children}
             <Footer />

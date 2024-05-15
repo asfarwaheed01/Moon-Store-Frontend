@@ -12,9 +12,12 @@ import Image from "next/image";
 import { colors, socials } from "../singleproductdata";
 import Accordion from "@/app/components/accordion/Accordion";
 import SimilarItems from "@/app/components/similaritems/SimilarItems";
+import { useAuth } from "@/app/context/authContext";
+import { toast } from "react-toastify";
 
 const ProductPage = () => {
   const params = useParams();
+  const { state, dispatch } = useAuth();
   const [product, setProduct] = useState<Product | null>(null);
   const productId = params.productId;
   const [count, setCount] = useState(1);
@@ -35,6 +38,14 @@ const ProductPage = () => {
 
     fetchProduct();
   }, [productId]);
+
+  const [isAdded, setIsAdded] = useState(false);
+
+  const addToCart = () => {
+    dispatch({ type: "ADD_TO_CART", payload: { product, quantity: 1 } });
+    setIsAdded(true);
+    toast.success("Added to Cart.");
+  };
 
   const accordionData = [
     { title: "Details", description: product?.description },
@@ -108,7 +119,12 @@ const ProductPage = () => {
                       <button onClick={() => setCount(count + 1)}>+</button>
                     </div>
                     <div className="w-[80%]">
-                      <button className="text-white bg-[#3A3845] text-[14px] text-center w-[100%] font-bold py-3 px-4">
+                      <button
+                        onClick={() => {
+                          addToCart();
+                        }}
+                        className="text-white bg-[#3A3845] text-[14px] text-center w-[100%] font-bold py-3 px-4"
+                      >
                         Add to Cart
                       </button>
                     </div>
@@ -169,8 +185,5 @@ const ProductPage = () => {
     </section>
   );
 };
-{
-  /* <p className="text-gray-600 mb-2">{product.description}</p> */
-}
 
 export default ProductPage;
