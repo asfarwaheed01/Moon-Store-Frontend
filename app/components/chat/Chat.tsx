@@ -16,14 +16,24 @@ const Chat: React.FC = () => {
     { text: string; fromSelf: boolean }[]
   >([]);
   const [inputValue, setInputValue] = useState<string>("");
+  const userId = "user123";
+  const adminId = "admin";
 
   const socket: Socket = io("http://localhost:8000");
 
   useEffect(() => {
-    socket.on("message", (message: string) => {
+    // socket.on("message", (message: string) => {
+    //   setMessages((prevMessages) => [
+    //     ...prevMessages,
+    //     { text: message, fromSelf: false },
+    //   ]);
+    // });
+    socket.emit("register", userId);
+
+    socket.on("receive-message", ({ sender, message }) => {
       setMessages((prevMessages) => [
         ...prevMessages,
-        { text: message, fromSelf: false },
+        { text: message, fromSelf: sender === userId },
       ]);
     });
 
@@ -37,8 +47,20 @@ const Chat: React.FC = () => {
   };
 
   const handleSendMessage = (e: MouseEvent<HTMLButtonElement>) => {
-    if (inputValue.trim() !== "") {
-      socket.emit("message", inputValue);
+    // if (inputValue.trim() !== "") {
+    //   socket.emit("message", inputValue);
+    //   setMessages((prevMessages) => [
+    //     ...prevMessages,
+    //     { text: inputValue, fromSelf: true },
+    //   ]);
+    //   setInputValue("");
+    // }
+    if (inputValue.trim() !== "" && socket) {
+      socket.emit("send-message", {
+        sender: userId,
+        receiver: adminId,
+        message: inputValue,
+      });
       setMessages((prevMessages) => [
         ...prevMessages,
         { text: inputValue, fromSelf: true },
