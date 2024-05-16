@@ -8,6 +8,7 @@ import QueryProvider from "@/providers/QueryProvider";
 import { AuthProvider } from "./context/authContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chat from "./components/chat/Chat";
 
 const inter = Inter({ subsets: ["latin"] });
 const garamond = EB_Garamond({
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Navbar />
             {children}
             <Footer />
+            <Chat />
           </QueryProvider>
         </AuthProvider>
       </body>
