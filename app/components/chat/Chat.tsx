@@ -9,14 +9,17 @@ import React, {
 import chatIcon from "../../../public/assets/chat-icon.png";
 import Image from "next/image";
 import { io, Socket } from "socket.io-client";
+import { useAuth } from "@/app/context/authContext";
 
 const Chat: React.FC = () => {
+  const { state } = useAuth();
+  const CurrentUser = state.user;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [messages, setMessages] = useState<
     { text: string; fromSelf: boolean }[]
   >([]);
   const [inputValue, setInputValue] = useState<string>("");
-  const userId = "user123";
+  const userId = CurrentUser?.username;
   const adminId = "admin";
 
   const socket: Socket = io("http://localhost:8000");
