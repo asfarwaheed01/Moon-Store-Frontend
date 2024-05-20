@@ -25,12 +25,6 @@ const Chat: React.FC = () => {
   const socket: Socket = io("http://localhost:8000");
 
   useEffect(() => {
-    // socket.on("message", (message: string) => {
-    //   setMessages((prevMessages) => [
-    //     ...prevMessages,
-    //     { text: message, fromSelf: false },
-    //   ]);
-    // });
     socket.emit("register", userId);
 
     socket.on("receive-message", ({ sender, message }) => {
@@ -50,14 +44,6 @@ const Chat: React.FC = () => {
   };
 
   const handleSendMessage = (e: MouseEvent<HTMLButtonElement>) => {
-    // if (inputValue.trim() !== "") {
-    //   socket.emit("message", inputValue);
-    //   setMessages((prevMessages) => [
-    //     ...prevMessages,
-    //     { text: inputValue, fromSelf: true },
-    //   ]);
-    //   setInputValue("");
-    // }
     if (inputValue.trim() !== "" && socket) {
       socket.emit("send-message", {
         sender: userId,
@@ -87,10 +73,10 @@ const Chat: React.FC = () => {
               {messages.map((message, index) => (
                 <div
                   key={index}
-                  className={`my-2 p-2 rounded-lg ${
+                  className={`my-2 p-2 rounded-lg max-w-[60%] ${
                     message.fromSelf
-                      ? "bg-gray-200 flex justify-end"
-                      : "bg-blue-200 self-start"
+                      ? "bg-blue-200 self-end ml-auto text-right"
+                      : "bg-gray-200 self-start mr-auto"
                   }`}
                 >
                   {message.text}
