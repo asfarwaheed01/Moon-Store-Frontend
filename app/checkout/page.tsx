@@ -20,9 +20,10 @@ const page = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
   console.log(cart);
-  const stripePromise = loadStripe(
-    "pk_test_51PEq9aI14C7BnuSwDR7HxP1O3BPRHKT67658Zd51cjaOJlApqh7qnrsZdtieCabG6fQzGRgh4iM5bLCG3s3jAYgE00Go6Kq9XS"
-  );
+  const stripeKey =
+    process.env.STRIPE_PRIMARY_KEY ||
+    "pk_test_51PEq9aI14C7BnuSwDR7HxP1O3BPRHKT67658Zd51cjaOJlApqh7qnrsZdtieCabG6fQzGRgh4iM5bLCG3s3jAYgE00Go6Kq9XS";
+  const stripePromise = loadStripe(stripeKey);
   const subtotal = cart.reduce(
     (acc, item) => acc + item.product.price * item.quantity,
     0

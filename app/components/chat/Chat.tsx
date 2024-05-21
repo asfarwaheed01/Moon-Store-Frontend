@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  useState,
-  ChangeEvent,
-  MouseEvent,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { useState, ChangeEvent, MouseEvent, useEffect } from "react";
 import chatIcon from "../../../public/assets/chat-icon.png";
 import Image from "next/image";
 import { io, Socket } from "socket.io-client";
