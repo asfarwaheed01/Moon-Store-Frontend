@@ -10,6 +10,7 @@ import chatIcon from "../../../public/assets/chat-icon.png";
 import Image from "next/image";
 import { io, Socket } from "socket.io-client";
 import { useAuth } from "@/app/context/authContext";
+import { BASE_URL } from "@/app/config/config";
 
 const Chat: React.FC = () => {
   const { state } = useAuth();
@@ -22,7 +23,7 @@ const Chat: React.FC = () => {
   const userId = CurrentUser?.username;
   const adminId = "admin";
 
-  const socket: Socket = io("http://localhost:8000");
+  const socket: Socket = io(BASE_URL);
 
   useEffect(() => {
     socket.emit("register", userId);

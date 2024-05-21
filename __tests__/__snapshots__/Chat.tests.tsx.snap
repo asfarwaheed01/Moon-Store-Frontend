@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders chat component 1`] = `
+<div>
+  <div
+    class="fixed bottom-4 md:right-8 right-4"
+  >
+    <button
+      class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-transform duration-300 ease-in-out transform scale-100"
+    >
+      <img
+        alt="Chat"
+        class="w-8 h-8"
+        data-nimg="1"
+        decoding="async"
+        height="40"
+        loading="lazy"
+        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+        style="color: transparent;"
+        width="40"
+      />
+    </button>
+  </div>
+</div>
+`;
