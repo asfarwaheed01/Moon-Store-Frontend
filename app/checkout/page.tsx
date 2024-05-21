@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 
 const page = () => {
   const router = useRouter();
-  const { state } = useAuth();
+  const { state, dispatch } = useAuth();
   const cart = state.cart;
   const user = state.user;
   const [isModalOpen, setModalOpen] = useState(false);
@@ -87,6 +87,7 @@ const page = () => {
       const response = await axios.post(`${BASE_URL}order`, orderData);
       console.log("Order placed successfully:", response.data);
       toast.success("Order Placed Successfully.");
+      dispatch({ type: "CLEAR_CART" });
       router.push("/orders");
     } catch (error) {
       console.error("Error placing order:", error);
