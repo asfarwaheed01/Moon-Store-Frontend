@@ -12,8 +12,10 @@ import { BASE_URL } from "../config/config";
 import PaymentModal from "./components/PaymentModal";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   const { state } = useAuth();
   const cart = state.cart;
   const user = state.user;
@@ -85,6 +87,7 @@ const page = () => {
       const response = await axios.post(`${BASE_URL}order`, orderData);
       console.log("Order placed successfully:", response.data);
       toast.success("Order Placed Successfully.");
+      router.push("/orders");
     } catch (error) {
       console.error("Error placing order:", error);
       toast.error("Error placing order.");
