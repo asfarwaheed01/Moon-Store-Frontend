@@ -30,10 +30,21 @@ const Page = () => {
   } = useQuery({
     queryKey: ["orders"],
     queryFn: fetchOrders,
+    refetchInterval: 5000,
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>No Orders Found.</p>;
+  if (isLoading)
+    return (
+      <p className="flex justify-center items-center font-semibold py-[10%]">
+        Loading...
+      </p>
+    );
+  if (error)
+    return (
+      <p className="flex justify-center items-center font-semibold py-[10%]">
+        No Orders Found.
+      </p>
+    );
 
   return (
     <section>
