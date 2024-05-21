@@ -12,12 +12,24 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { mutate, pending, error } = useLoginMutation();
+  const [loginError, setLoginError] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await mutate({ email, password });
-      router.push("/");
+      // await mutate({ email, password });
+      // router.push("/");
+      await mutate(
+        { email, password },
+        {
+          onSuccess: () => {
+            router.push("/");
+          },
+          onError: (error) => {
+            setLoginError(error.message);
+          },
+        }
+      );
     } catch (error) {
       console.error("Login failed:", error);
     }
@@ -88,8 +100,8 @@ const LoginPage = () => {
               </Link>
             </p>
           </div>
-          {error && (
-            <div className="text-red-500 py-2 text-center">{error.message}</div>
+          {loginError && (
+            <div className="text-red-500 py-2 text-center">{loginError}</div>
           )}
           <Google />
         </form>

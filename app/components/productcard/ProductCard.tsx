@@ -11,12 +11,10 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, className }) => {
-  const { state, dispatch } = useAuth();
-  const [isAdded, setIsAdded] = useState(false);
+  const { dispatch } = useAuth();
 
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", payload: { product, quantity: 1 } });
-    setIsAdded(true);
     toast.success("Added to Cart.");
   };
   return (

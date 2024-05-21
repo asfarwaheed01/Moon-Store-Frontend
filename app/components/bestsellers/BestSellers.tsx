@@ -5,9 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/app/utils/product";
 import Container from "../Container";
 import ProductDisplay from "../productdisplay/productdisplay";
+import { BASE_URL } from "@/app/config/config";
 
 const fetchProducts = async () => {
-  const response = await axios.get<Product[]>("http://localhost:8000/products");
+  const response = await axios.get<Product[]>(`${BASE_URL}products`);
   return response.data.slice(0, 8);
 };
 const BestSellers = () => {

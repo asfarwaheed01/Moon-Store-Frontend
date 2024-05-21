@@ -1,10 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Product from "../bestsellers/product.type";
 import Container from "../Container";
-import ProductDisplay from "../productdisplay/productdisplay";
 import { BASE_URL } from "@/app/config/config";
 import ProductCard from "../productcard/ProductCard";
 
@@ -14,12 +13,7 @@ const fetchProducts = async () => {
 };
 
 const SimilarItems = () => {
-  const {
-    data: products,
-    isLoading,
-    error,
-    refetch,
-  } = useQuery({
+  const { data: products } = useQuery({
     queryKey: ["products3"],
     queryFn: fetchProducts,
     refetchInterval: Infinity,

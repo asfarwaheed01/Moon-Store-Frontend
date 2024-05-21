@@ -1,6 +1,5 @@
 import React from "react";
 import { Product } from "@/app/utils/product";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../productcard/ProductCard";
 import { api } from "@/app/hooks/api";
