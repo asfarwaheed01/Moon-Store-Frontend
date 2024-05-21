@@ -17,8 +17,6 @@ const LoginPage = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      // await mutate({ email, password });
-      // router.push("/");
       await mutate(
         { email, password },
         {
