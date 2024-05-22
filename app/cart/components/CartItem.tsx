@@ -3,15 +3,7 @@ import React from "react";
 import { useAuth } from "@/app/context/authContext";
 import trash from "../../../public/assets/Trash.png";
 import Image from "next/image";
-
-const tableHeaders = [
-  { title: "", key: "delete" },
-  { title: "Photo", key: "photo" },
-  { title: "Product", key: "product" },
-  { title: "Price", key: "price" },
-  { title: "Quantity", key: "quantity" },
-  { title: "Subtotal", key: "subtotal" },
-];
+import { tableHeaders } from "./cartItem.data";
 
 const CartItem = () => {
   const { state, dispatch } = useAuth();
@@ -37,8 +29,8 @@ const CartItem = () => {
   return (
     <div className="overflow-x-auto">
       <table className="md:block hidden min-w-full table-auto">
-        <thead className="bg-[#3A3845] text-white">
-          <tr>
+        <thead className="bg-[#3A3845] text-white w-full">
+          <tr className="w-full">
             {tableHeaders.map((header, index) => (
               <th key={index} className="px-2 py-2">
                 {header.key === "delete" ? (
